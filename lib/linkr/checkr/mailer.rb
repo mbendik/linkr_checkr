@@ -1,7 +1,7 @@
 require 'mail'
 
 module Linkr
-  module Checkr
+  class Checkr
     class Mailer
 
       attr_accessor :error_links
