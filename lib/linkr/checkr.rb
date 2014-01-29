@@ -125,8 +125,3 @@ module Linkr
   end
 end
 
-ch=Linkr::Checkr.new("http://integration.cashplay.co/mobile/home?game_id=1&lat=50&lng=14").search
-ch=Linkr::Checkr.new("https://app.cashplay.co/mobile/home?game_id=1&lat=50&lng=14").search
-
-
-ch=Linkr::Checkr.new("http://cashplay.dev/mobile/home?game_id=1&lat=50&lng=14").search
