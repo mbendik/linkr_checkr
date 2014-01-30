@@ -1,11 +1,11 @@
-require 'linkr/checkr/version'
+require 'linkr_checkr/mailer'
 require 'nokogiri'
 require 'net/http'
 require 'net/https'
 require 'uri'
 
-module Linkr
-  class Checkr
+module LinkrCheckr
+  class Search
 
     attr_accessor :uri
     attr_accessor :cookies
@@ -21,7 +21,7 @@ module Linkr
       @error_links = []
     end
 
-    def search
+    def call
       raise ArgumentError unless valid_url?(@uri.to_s)
 
       http         = Net::HTTP.new(@uri.host)
@@ -77,8 +77,6 @@ module Linkr
           when Net::HTTPSuccess  then
             document = add_document(link_uri, response)
           when Net::HTTPFound    then
-            p "redirect:"
-            p response["location"]
             document = request_link(response["location"])
           when Net::HTTPNotFound then @error_links << link_uri.to_s
           end
@@ -119,8 +117,16 @@ module Linkr
     end
 
     def process_errors
-      p "Links with error:"
-      @error_links.uniq.each{|l| p l}
+      error_links = @error_links.compact.uniq
+
+      if error_links.present?
+        if @options[:send_mail]
+          Mailer.new(error_links).deliver
+        else
+          p "Links with error:"
+          error_links.each{|l| p l}
+        end
+      end
     end
   end
 end
