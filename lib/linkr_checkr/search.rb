@@ -118,7 +118,6 @@ module LinkrCheckr
 
     def process_errors
       error_links = @error_links.compact.uniq
-
       if error_links.present?
         if @options[:send_mail]
           Mailer.new(error_links).deliver

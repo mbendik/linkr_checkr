@@ -1,4 +1,4 @@
-# Linkr::Checkr
+# LinkrCheckr
 
 TODO: Write a gem description
 
@@ -6,7 +6,7 @@ TODO: Write a gem description
 
 Add this line to your application's Gemfile:
 
-    gem 'linkr-checkr'
+    gem 'linkr_checkr'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install linkr-checkr
+    $ gem install linkr_checkr
 
 ## Usage
 

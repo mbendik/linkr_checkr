@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'bundler/setup'
+require 'webmock/rspec'
 
 require File.expand_path('../../lib/linkr_checkr', __FILE__)
 
